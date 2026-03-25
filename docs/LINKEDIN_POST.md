@@ -76,3 +76,24 @@ Show `database_backend: postgresql` and `state_backend: redis` to prove the syst
 
 3. Approval plus incident flow
 Show one pending approval, one blocked run, and the related trace or incident so the operational story is visible in one glance.
+
+## Final Carousel Order
+
+1. `screen-04-product-proof.png`
+Use as the first image. It is the cleanest, most product-like framing.
+
+2. `screen-01-dashboard.png`
+Use as the second image to show this is not only a concept slide, but a real interface.
+
+3. `screen-02-health-proof.png`
+Use as the third image to prove the stack is actually running on PostgreSQL and Redis.
+
+4. `screen-03-ops-proof.png`
+Use as the final image to show approval routing, blocked incidents, and traceability.
+
+## Caption Suggestions
+
+- Screen 1: Product framing for the control layer around AI agents.
+- Screen 2: The dashboard view of the runtime control tower itself.
+- Screen 3: Live infrastructure proof with PostgreSQL-backed history and Redis-backed state.
+- Screen 4: The operational flow: escalate, approve, block, and audit.

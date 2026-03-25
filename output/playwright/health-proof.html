@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Runtime Health Proof</title>
+  <style>
+    :root {
+      --bg: #f3ede3;
+      --ink: #1c2328;
+      --muted: #58636d;
+      --accent: #0f7a68;
+      --accent-soft: #d9efe9;
+      --warn: #b24d39;
+      --warn-soft: #f6e0d9;
+      --line: rgba(28, 35, 40, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(15,122,104,0.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(178,77,57,0.12), transparent 25%),
+        var(--bg);
+    }
+    .frame {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      gap: 24px;
+    }
+    .hero, .json-card, .metric {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.82);
+      border-radius: 24px;
+      box-shadow: 0 18px 42px rgba(28, 35, 40, 0.08);
+    }
+    .hero {
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-size: 3.6rem;
+      line-height: 0.95;
+      font-family: Georgia, serif;
+      max-width: 10ch;
+    }
+    .lede {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 1.05rem;
+    }
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-content: flex-start;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      background: var(--accent-soft);
+    }
+    .pill.warn {
+      background: var(--warn-soft);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .metric {
+      padding: 18px 20px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 2rem;
+      font-family: Georgia, serif;
+      margin-bottom: 4px;
+    }
+    .metric span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .json-card {
+      padding: 22px;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #10212a;
+    }
+  </style>
+</head>
+<body>
+  <main class="frame">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Live Runtime Health</div>
+        <h1>Infrastructure proof, not mock data.</h1>
+        <p class="lede">
+          This screen captures a running `Agent Runtime Control Tower` instance wired to real infrastructure:
+          `PostgreSQL` for persistent run history and `Redis` for fast runtime state.
+        </p>
+      </div>
+      <div class="stack">
+        <div class="pill">database_backend: postgresql</div>
+        <div class="pill">state_backend: redis</div>
+        <div class="pill warn">pending_approvals: 1</div>
+        <div class="pill warn">incidents: 2</div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="metric"><strong>2</strong><span>organizations</span></article>
+      <article class="metric"><strong>2</strong><span>agents</span></article>
+      <article class="metric"><strong>2</strong><span>MCP servers</span></article>
+      <article class="metric"><strong>7</strong><span>runs recorded</span></article>
+    </section>
+
+    <section class="json-card">
+      <div class="eyebrow">GET /health</div>
+      <pre>{
+  "service": "agent-runtime-control-tower",
+  "database_backend": "postgresql",
+  "state_backend": "redis",
+  "organizations": 2,
+  "agents": 2,
+  "mcp_servers": 2,
+  "runs": 7,
+  "pending_approvals": 1,
+  "incidents": 2
+}</pre>
+    </section>
+  </main>
+</body>
+</html>
