@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Runtime Control Tower</title>
+  <style>
+    :root {
+      --bg: #f4efe6;
+      --ink: #182126;
+      --accent: #0d7a67;
+      --accent-soft: #d9f1ea;
+      --warn: #b84a3a;
+      --card: rgba(255, 255, 255, 0.78);
+      --border: rgba(24, 33, 38, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(13,122,103,0.18), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(184,74,58,0.12), transparent 25%),
+        var(--bg);
+    }
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .panel, .metric, .timeline {
+      border: 1px solid var(--border);
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      border-radius: 22px;
+      box-shadow: 0 12px 40px rgba(24, 33, 38, 0.08);
+    }
+    .panel {
+      padding: 28px;
+      min-height: 340px;
+    }
+    .eyebrow {
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(2.3rem, 6vw, 4.6rem);
+      line-height: 0.95;
+      margin: 0 0 18px;
+      max-width: 12ch;
+    }
+    p.lead {
+      font-family: "Segoe UI", sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 62ch;
+      margin: 0 0 24px;
+    }
+    .chips, .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chip {
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: var(--accent-soft);
+      font-family: "Segoe UI", sans-serif;
+      font-size: 0.92rem;
+    }
+    .status-stack {
+      display: grid;
+      gap: 14px;
+      padding: 24px;
+    }
+    .metric {
+      padding: 18px 20px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 6px;
+    }
+    .metric span {
+      font-family: "Segoe UI", sans-serif;
+      color: rgba(24, 33, 38, 0.75);
+    }
+    .section {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .timeline {
+      padding: 24px;
+    }
+    .timeline h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      font-family: "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
+    .callout {
+      margin-top: 22px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--warn);
+      background: rgba(184,74,58,0.08);
+      border-radius: 14px;
+      font-family: "Segoe UI", sans-serif;
+    }
+    @media (max-width: 880px) {
+      .hero, .section { grid-template-columns: 1fr; }
+      .shell { padding: 24px 16px 48px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="panel">
+        <div class="eyebrow">Agent Runtime Control Tower</div>
+        <h1>Control layer for AI agents in production.</h1>
+        <p class="lead">
+          A FastAPI service for governing agent execution across MCP servers with approvals, policy checks,
+          incident visibility, and trace-friendly runtime records. Built to show the layer most AI demos skip:
+          who can run what, against which tools, under which constraints.
+        </p>
+        <div class="chips">
+          <div class="chip">Python</div>
+          <div class="chip">FastAPI</div>
+          <div class="chip">MCP Governance</div>
+          <div class="chip">Approvals</div>
+          <div class="chip">Runtime Traces</div>
+          <div class="chip">Policy Engine</div>
+        </div>
+        <div class="callout">
+          Goal: make AI agent operations observable, tenant-scoped, and stoppable before bad tool access reaches production systems.
+        </div>
+      </article>
+
+      <aside class="status-stack">
+        <div class="metric">
+          <strong>2</strong>
+          <span>Seeded organizations with isolated runtime scope</span>
+        </div>
+        <div class="metric">
+          <strong>2</strong>
+          <span>MCP servers with different trust and risk tiers</span>
+        </div>
+        <div class="metric">
+          <strong>3</strong>
+          <span>Control paths: auto-approve, human approval, hard block</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <article class="timeline">
+        <h2>Core Runtime Decisions</h2>
+        <ul>
+          <li>Reject cross-tenant requests before execution.</li>
+          <li>Escalate risky runs to approval when budget or tool-call thresholds are exceeded.</li>
+          <li>Block policy-restricted MCP targets and emit incidents automatically.</li>
+          <li>Capture simulated tool traces for every run to support review and replay.</li>
+        </ul>
+      </article>
+
+      <article class="timeline">
+        <h2>Why This Matters</h2>
+        <ul>
+          <li>Most agent demos stop at the model call and ignore operational safety.</li>
+          <li>Enterprise teams need approval routing, auditability, and clear policy boundaries.</li>
+          <li>This project focuses on the backend control plane around agents, not just the agent itself.</li>
+          <li>It is designed as a portfolio-ready proof of system design, reliability thinking, and AI governance.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

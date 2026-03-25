@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-runtime-control-tower"
+version = "0.1.0"
+description = "FastAPI control tower for governing AI agents, MCP servers, runtime policies, and execution traces."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.116.0,<1.0.0",
+  "psycopg[binary]>=3.2.12,<4.0.0",
+  "redis>=6.4.0,<7.0.0",
+  "sqlalchemy>=2.0.44,<3.0.0",
+  "uvicorn>=0.35.0,<1.0.0",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
