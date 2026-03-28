@@ -116,6 +116,24 @@ python -m pip install -e .
 python -m pytest -q
 ```
 
+## Proof Assets
+
+What you can verify in the repository:
+
+- dashboard proof: [`output/playwright/screen-01-dashboard.png`](output/playwright/screen-01-dashboard.png)
+- health proof with PostgreSQL and Redis: [`output/playwright/screen-02-health-proof.png`](output/playwright/screen-02-health-proof.png)
+- approval and incident flow proof: [`output/playwright/screen-03-ops-proof.png`](output/playwright/screen-03-ops-proof.png)
+- product framing: [`output/playwright/screen-04-product-proof.png`](output/playwright/screen-04-product-proof.png)
+- architecture notes: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
+- case study: [`docs/CASE_STUDY.md`](docs/CASE_STUDY.md)
+
+## Verified Paths
+
+- safe run -> approved
+- risky run -> awaiting approval -> approved by admin
+- restricted MCP target -> blocked -> incident created
+- Docker demo verified against PostgreSQL-backed history and Redis-backed runtime state
+
 ## Architecture
 
 - runtime API: [main.py](/C:/Users/syfsy/projekty/agent-runtime-control-tower/src/agent_runtime_control_tower/main.py)
